@@ -65,27 +65,21 @@ get("sites[@site.name=SHMG]", "shmg");
 
 ## HTTP API - GET /
 
-version 可以做增量更新，增量更新只会更新差异部分的数据。因为version的缘故，所有的数据修改都会存有历史记录。这些历史在增量更新的时候可以合并。
-
 ```
-GET / ?module=system.site&version=10 HTTP 1.1
+GET /?module=system HTTP 1.1
 HOST: host
 
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
+  "name": "SHMG"
 }
 ```
 
 ## Request parameter
 
 - module 类型 string，如system可以得到system这个模块的所有数据
-- version 纯数字的数据版本号
-- client_version string 客户端版本号，比如iOS 版本是0.0.9，android版本是0.0.1。
-- server_version string 表示当前配置的模型的版本号
-- city int
-- device string
 
 ## HTTP API - POST /
 
