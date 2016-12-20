@@ -63,8 +63,9 @@ get("sites[@site.name=SHMG]", "shmg");
 }
 ```
 
-## HTTP API - GET /
+## HTTP API
 
+## 查询配置文件
 ```
 GET /?module=system HTTP 1.1
 HOST: host
@@ -77,11 +78,13 @@ Content-Type: application/json
 }
 ```
 
-## Request parameter
+## 请求参数
 
-- module 类型 string，如system可以得到system这个模块的所有数据
+请求参数是 QueryString
 
-## HTTP API - POST /
+- module string 如system可以得到system这个模块的所有数据
+
+## 修改配置文件
 
 配置键值
 
