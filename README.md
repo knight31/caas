@@ -5,6 +5,7 @@ caas还在原型设计状态，不可用。
 下面几个维度可能决定最终配置文件的差异。
 
 - 客户端版本
+- 服务器版本
 - 城市
 - 设备
 - token
@@ -64,8 +65,9 @@ get("sites[@site.name=SHMG]", "shmg");
 
 ## HTTP API - GET /
 
-```
+version 可以做增量更新，增量更新只会更新差异部分的数据。因为version的缘故，所有的数据修改都会存有历史记录。这些历史在增量更新的时候可以合并。
 
+```
 GET / ?module=system.site&version=10 HTTP 1.1
 HOST: host
 
@@ -79,11 +81,11 @@ Content-Type: application/json
 ## Request parameter
 
 - module 类型 string，如system可以得到system这个模块的所有数据
-- version 数字
-
-version 可以做增量更新，增量更新只会更新差异部分的数据。
-
-因为version的缘故，所有的数据修改都会存有历史记录。这些历史在增量更新的时候可以合并。
+- version 纯数字的数据版本号
+- client_version string 客户端版本号，比如iOS 版本是0.0.9，android版本是0.0.1。
+- server_version string 表示当前配置的模型的版本号
+- city int
+- device string
 
 ## HTTP API - POST /
 
@@ -105,43 +107,11 @@ keypath=system.site.name&value=SHMG
 keypath=system.site.name[]&value=SHMG
 ```
 
-设置数组
-
-```
-keypath=system.site.name[last]&value=SHMG
-```
-
-设置数组
-
-```
-keypath=system.site.name[${index}]&value=SHMG
-```
-
 设置Object
 
 ```
 keypath=system.site.image&value={
   "url": "",
   "context-type": "image/jpeg"
-}
-```
-
-## 强类型
-
-```
-GET /schema/?module=system
-
-{
-  "articles": {
-    name: "Article"
-  	 fields: [
-  	   {
-  	     "name": "title",
-  	     "type": string,
-  	     "nullable": NULL,
-  	     "default": ""
-  	   }
-    ]
-  }
 }
 ```
