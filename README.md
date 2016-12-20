@@ -12,6 +12,9 @@
  * 第二个参数是默认值
  */
 (void *)get(NSString *key, ...);
+(int)getInt(NSString *key, ...);
+(float)getFloat(NSString *key, ...);
+(NSString)getString(NSString *key, ...);
 
 get("system.site.name")
 // will print http://example.com
@@ -24,7 +27,12 @@ get("ui.homepage.banner[0].image_url")
 
 get("ui.homepage.banner[last]") 
 
-get("ui.homepage.banner[-2]") 
+get("ui.homepage.banner[-2]")
+
+get("current.sitename", "shmg");
+
+get("site.${current.sitename}.articles)
+// current.sitename 作为变量访问指定的site的属性名
 ```
 
 ## HTTP API
