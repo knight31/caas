@@ -1,9 +1,13 @@
 # caas
 
-不同的客户端版本。
-不同的城市。
-不同的设备。
-指定的token。
+caas还在原型设计状态，不可用。
+
+下面几个维度可能决定最终配置文件的差异。
+
+- 客户端版本
+- 城市
+- 设备
+- token
 
 ## Objective-C
 
@@ -32,10 +36,33 @@ get("ui.homepage.banner[-2]")
 get("current.sitename", "shmg");
 
 get("site.${current.sitename}.articles)
+
+get("sites[@site.name=SHMG]", "shmg");
 // current.sitename 作为变量访问指定的site的属性名
+
 ```
 
-## HTTP API
+## 本地配置文件作为数据源
+
+```
+{
+  current: {
+  	sitename: "shmg"
+  },
+  sites: [
+    {
+      "name": "SHMG",
+      "articles": [
+      ]
+    },
+    {
+      "name": "SHMG Incubator"
+    }
+  ]
+}
+```
+
+## HTTP API - GET /
 
 ```
 
@@ -54,4 +81,67 @@ Content-Type: application/json
 - module 类型 string，如system可以得到system这个模块的所有数据
 - version 数字
 
-version 可以做增量更新，只会更新到差异部分的数据。
+version 可以做增量更新，增量更新只会更新差异部分的数据。
+
+因为version的缘故，所有的数据修改都会存有历史记录。这些历史在增量更新的时候可以合并。
+
+## HTTP API - POST /
+
+配置键值
+
+```
+POST /?module=system HTTP 1.1
+HOST: host
+
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+keypath=system.site.name&value=SHMG
+```
+
+追加到数组的尾部
+
+```
+keypath=system.site.name[]&value=SHMG
+```
+
+设置数组
+
+```
+keypath=system.site.name[last]&value=SHMG
+```
+
+设置数组
+
+```
+keypath=system.site.name[${index}]&value=SHMG
+```
+
+设置Object
+
+```
+keypath=system.site.image&value={
+  "url": "",
+  "context-type": "image/jpeg"
+}
+```
+
+## 强类型
+
+```
+GET /schema/?module=system
+
+{
+  "articles": {
+    name: "Article"
+  	 fields: [
+  	   {
+  	     "name": "title",
+  	     "type": string,
+  	     "nullable": NULL,
+  	     "default": ""
+  	   }
+    ]
+  }
+}
+```
