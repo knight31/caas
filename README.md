@@ -42,6 +42,72 @@ get("sites[@site.name=SHMG]", "shmg");
 // current.sitename 作为变量访问指定的site的属性名
 
 ```
+## Objective-C中初步设计
+```Objective-C
+
+CSConfigAPI.h
+      |----CSConfigAPIDelegate：包含请求的所有回调
+CSConfigObject.h -------------- config的基类
+CSBaseConfigRequest.h --------- config的请求基类
+CSBaseConfigResponse.h -------- config的响应基类
+
+```
+```Objective-C
+用法：
+@interface DemoViewController () <CSConfigAPIDelegate>
+
+@property (nonatomic, strong) CSConfigAPI *configAPI;
+
+@property (nonatomic, strong) CSBaseConfigRequest *baseConfigRequest;
+
+@end
+
+@implementation DemoViewController
+
+#pragma mark - Life Cycle
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.title = @"测试";
+    
+    // 调用获取配置信息
+    [self.configAPI loadBaseConfig:self.baseConfigRequest];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
+#pragma mark - CSConfigAPIDelegate
+- (void)onBaseConfigDone:(CSBaseConfigRequest *)request reponse:(CSBaseConfigResponse *)response {
+    // 获取配置信息成功
+}
+
+- (void)configRequest:(id)request didFailWithError:(NSError *)error {
+    // 获取配置信息失败
+}
+
+#pragma mark - Init
+- (CSConfigAPI *)configAPI {
+    if (!_configAPI) {
+        _configAPI = [[CSConfigAPI alloc] init];
+        _configAPI.delegate = self;
+    }
+    return _configAPI;
+}
+
+- (CSBaseConfigRequest *)baseConfigRequest {
+    if (!_baseConfigRequest) {
+        _baseConfigRequest = [[CSBaseConfigRequest alloc] init];
+        _baseConfigRequest.configPath = @"https//www.baidu.com/";// 配置的路径
+        _baseConfigRequest.params = @[@"banners"];// 配置的参数
+    }
+    return _baseConfigRequest;
+}
+
+@end
+```
+
 
 ## 本地配置文件作为数据源
 
@@ -112,3 +178,5 @@ keypath=system.site.image&value={
   "context-type": "image/jpeg"
 }
 ```
+
+
