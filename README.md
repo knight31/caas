@@ -131,6 +131,8 @@ CSBaseConfigResponse.h -------- config的响应基类
 
 ## HTTP API
 
+caas提供一组api接口用于读取和保存配置信息。客户端使用http api接口读取配置，接口返回json格式的数据。
+
 ## 查询配置文件
 ```
 GET /?module=system HTTP 1.1
