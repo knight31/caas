@@ -5,6 +5,12 @@ Caas 是 configuration as a service 的简称。caas设计的目的是希望可�
 
 目前caas正在创意阶段，没有任何可用的组件。
 
+## 客户端特性
+
+- 从网络查询配置文件
+- 本地缓存和缓存更新机制
+- 从服务器推送更新
+
 ## Objective-C 安装
 
 编辑 Podfile。
