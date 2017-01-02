@@ -41,6 +41,35 @@ get("ui.homepage.banner[0].image_url", "http://example.com/1.jpg")
 
 caas提供一组api接口用于读取和保存配置信息。客户端使用http api接口读取配置，接口返回json格式的数据。
 
+- 查询配置文件信息
+- 提交配置文件
+- 创建用户
+- 查询用户token
+- 修改用户密码
+
+```
+GET /api/conf HTTP/1.1
+{
+
+}
+
+POST /api/conf HTTP/1.1
+module=module&data={name: "CJ"}&token=token
+
+POST /api/user HTTP/1.1
+username=CJ&password=123456&email=i@imcj.me
+
+GET /api/user/token HTTP/1.1
+username=CJ&password=123456
+
+{
+    "token": "token"
+}
+
+POST /api/user/password
+username=CJ&password=123456&new_password=654321
+```
+
 ```shell
 # 查询配置文件
 $ curl http://caas.shmakegroup.cn/
