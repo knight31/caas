@@ -7,13 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		569DFA331E1A220700B26925 /* Caas.h in Headers */ = {isa = PBXBuildFile; fileRef = 569DFA311E1A220700B26925 /* Caas.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		566A04691E1B9C9400B37B21 /* Caas.h in Headers */ = {isa = PBXBuildFile; fileRef = 566A04641E1B9C9400B37B21 /* Caas.h */; };
+		566A046A1E1B9C9400B37B21 /* CaasGet.h in Headers */ = {isa = PBXBuildFile; fileRef = 566A04651E1B9C9400B37B21 /* CaasGet.h */; };
+		566A046B1E1B9C9400B37B21 /* CaasGet.m in Sources */ = {isa = PBXBuildFile; fileRef = 566A04661E1B9C9400B37B21 /* CaasGet.m */; };
+		566A046C1E1B9C9400B37B21 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 566A04681E1B9C9400B37B21 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		566A04641E1B9C9400B37B21 /* Caas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Caas.h; sourceTree = "<group>"; };
+		566A04651E1B9C9400B37B21 /* CaasGet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaasGet.h; sourceTree = "<group>"; };
+		566A04661E1B9C9400B37B21 /* CaasGet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaasGet.m; sourceTree = "<group>"; };
+		566A04681E1B9C9400B37B21 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		569DFA2E1E1A220700B26925 /* Caas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Caas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		569DFA311E1A220700B26925 /* Caas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Caas.h; sourceTree = "<group>"; };
-		569DFA321E1A220700B26925 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,10 +32,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		566A04631E1B9C9400B37B21 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				566A04641E1B9C9400B37B21 /* Caas.h */,
+				566A04651E1B9C9400B37B21 /* CaasGet.h */,
+				566A04661E1B9C9400B37B21 /* CaasGet.m */,
+				566A04671E1B9C9400B37B21 /* Exclude */,
+				566A04681E1B9C9400B37B21 /* Info.plist */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		566A04671E1B9C9400B37B21 /* Exclude */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Exclude;
+			sourceTree = "<group>";
+		};
 		569DFA241E1A220700B26925 = {
 			isa = PBXGroup;
 			children = (
-				569DFA301E1A220700B26925 /* Caas */,
+				566A04631E1B9C9400B37B21 /* Classes */,
 				569DFA2F1E1A220700B26925 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,15 +67,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		569DFA301E1A220700B26925 /* Caas */ = {
-			isa = PBXGroup;
-			children = (
-				569DFA311E1A220700B26925 /* Caas.h */,
-				569DFA321E1A220700B26925 /* Info.plist */,
-			);
-			path = Caas;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -59,7 +74,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				569DFA331E1A220700B26925 /* Caas.h in Headers */,
+				566A04691E1B9C9400B37B21 /* Caas.h in Headers */,
+				566A046A1E1B9C9400B37B21 /* CaasGet.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +137,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				566A046C1E1B9C9400B37B21 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				566A046B1E1B9C9400B37B21 /* CaasGet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
