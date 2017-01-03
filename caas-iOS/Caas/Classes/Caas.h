@@ -6,7 +6,6 @@
 //  Copyright © 2017 shmakergroup. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 
 //! Project version number for Caas.
 FOUNDATION_EXPORT double CaasVersionNumber;
